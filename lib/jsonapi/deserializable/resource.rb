@@ -35,9 +35,9 @@ module JSONAPI
         new(payload).to_h
       end
 
-      def initialize(payload, root: '/data')
+      def initialize(payload, options = {})
         @data = payload || {}
-        @root = root
+        @root = options.fetch(:root, '/data')
         @type = @data['type']
         @id   = @data['id']
         @attributes    = @data['attributes'] || {}
